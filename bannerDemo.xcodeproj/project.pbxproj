@@ -14,9 +14,9 @@
 		CE3B08F41F0E0FE50089D337 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3B08F21F0E0FE50089D337 /* LaunchScreen.storyboard */; };
 		CE3B08FF1F0E0FE60089D337 /* bannerDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B08FE1F0E0FE60089D337 /* bannerDemoTests.swift */; };
 		CE3B090A1F0E0FE60089D337 /* bannerDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B09091F0E0FE60089D337 /* bannerDemoUITests.swift */; };
-		CE3B09181F0E10100089D337 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B09171F0E10100089D337 /* BannerView.swift */; };
-		CE3B091F1F0E14C70089D337 /* BannerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B091D1F0E14C70089D337 /* BannerViewItem.swift */; };
-		CE3B09201F0E14C70089D337 /* BannerViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3B091E1F0E14C70089D337 /* BannerViewItem.xib */; };
+		CE570AE31F3A9E3B000E7EDD /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE570AE01F3A9E3B000E7EDD /* BannerView.swift */; };
+		CE570AE41F3A9E3B000E7EDD /* BannerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE570AE11F3A9E3B000E7EDD /* BannerViewItem.swift */; };
+		CE570AE51F3A9E3B000E7EDD /* BannerViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE570AE21F3A9E3B000E7EDD /* BannerViewItem.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,9 +50,9 @@
 		CE3B09051F0E0FE60089D337 /* bannerDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bannerDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3B09091F0E0FE60089D337 /* bannerDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bannerDemoUITests.swift; sourceTree = "<group>"; };
 		CE3B090B1F0E0FE60089D337 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE3B09171F0E10100089D337 /* BannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BannerView.swift; path = ../BannerView.swift; sourceTree = "<group>"; };
-		CE3B091D1F0E14C70089D337 /* BannerViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerViewItem.swift; sourceTree = "<group>"; };
-		CE3B091E1F0E14C70089D337 /* BannerViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BannerViewItem.xib; sourceTree = "<group>"; };
+		CE570AE01F3A9E3B000E7EDD /* BannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		CE570AE11F3A9E3B000E7EDD /* BannerViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerViewItem.swift; sourceTree = "<group>"; };
+		CE570AE21F3A9E3B000E7EDD /* BannerViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BannerViewItem.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,15 +103,13 @@
 		CE3B08E81F0E0FE50089D337 /* bannerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				CE570ADF1F3A9E3B000E7EDD /* bannerView */,
 				CE3B08E91F0E0FE50089D337 /* AppDelegate.swift */,
 				CE3B08EB1F0E0FE50089D337 /* ViewController.swift */,
 				CE3B08ED1F0E0FE50089D337 /* Main.storyboard */,
 				CE3B08F01F0E0FE50089D337 /* Assets.xcassets */,
 				CE3B08F21F0E0FE50089D337 /* LaunchScreen.storyboard */,
 				CE3B08F51F0E0FE50089D337 /* Info.plist */,
-				CE3B09171F0E10100089D337 /* BannerView.swift */,
-				CE3B091D1F0E14C70089D337 /* BannerViewItem.swift */,
-				CE3B091E1F0E14C70089D337 /* BannerViewItem.xib */,
 			);
 			path = bannerDemo;
 			sourceTree = "<group>";
@@ -132,6 +130,16 @@
 				CE3B090B1F0E0FE60089D337 /* Info.plist */,
 			);
 			path = bannerDemoUITests;
+			sourceTree = "<group>";
+		};
+		CE570ADF1F3A9E3B000E7EDD /* bannerView */ = {
+			isa = PBXGroup;
+			children = (
+				CE570AE01F3A9E3B000E7EDD /* BannerView.swift */,
+				CE570AE11F3A9E3B000E7EDD /* BannerViewItem.swift */,
+				CE570AE21F3A9E3B000E7EDD /* BannerViewItem.xib */,
+			);
+			path = bannerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,7 +252,7 @@
 				CE3B08F41F0E0FE50089D337 /* LaunchScreen.storyboard in Resources */,
 				CE3B08F11F0E0FE50089D337 /* Assets.xcassets in Resources */,
 				CE3B08EF1F0E0FE50089D337 /* Main.storyboard in Resources */,
-				CE3B09201F0E14C70089D337 /* BannerViewItem.xib in Resources */,
+				CE570AE51F3A9E3B000E7EDD /* BannerViewItem.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,8 +279,8 @@
 			files = (
 				CE3B08EC1F0E0FE50089D337 /* ViewController.swift in Sources */,
 				CE3B08EA1F0E0FE50089D337 /* AppDelegate.swift in Sources */,
-				CE3B09181F0E10100089D337 /* BannerView.swift in Sources */,
-				CE3B091F1F0E14C70089D337 /* BannerViewItem.swift in Sources */,
+				CE570AE31F3A9E3B000E7EDD /* BannerView.swift in Sources */,
+				CE570AE41F3A9E3B000E7EDD /* BannerViewItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +527,7 @@
 				CE3B09101F0E0FE60089D337 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE3B09111F0E0FE60089D337 /* Build configuration list for PBXNativeTarget "bannerDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +536,7 @@
 				CE3B09131F0E0FE60089D337 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE3B09141F0E0FE60089D337 /* Build configuration list for PBXNativeTarget "bannerDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -535,6 +545,7 @@
 				CE3B09161F0E0FE60089D337 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
