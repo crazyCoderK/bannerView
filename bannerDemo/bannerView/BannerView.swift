@@ -13,16 +13,18 @@ class BannerView: UIView {
   fileprivate var pageControl: UIPageControl?
   fileprivate var timer: Timer?
   fileprivate var timerElapsed = NSDate()
-  var timeInterval: TimeInterval = 4
+  var timeInterval: TimeInterval = 5
   fileprivate var currentPage = 1
-  fileprivate var cycleEnabled = true 
+  fileprivate var cycleEnabled = true
+  var bannerClicked: ((_: String) ->())?
+  
   var automaticScroll = true {
     didSet {
       timer?.fireDate = automaticScroll ? Date() : Date.distantFuture
     }
   }
   
-  fileprivate var circleDataSource: [UIImage]?
+  fileprivate var circleDataSource: [UIImage] = []
   var dataSource = [UIImage]() {
     didSet {
       circleDataSource = dataSource
@@ -31,8 +33,8 @@ class BannerView: UIView {
         collectionView.reloadData()
         return
       }
-      circleDataSource?.insert(dataSource.last!, at: 0)
-      circleDataSource?.append(dataSource.first!)
+      circleDataSource.insert(dataSource.last!, at: 0)
+      circleDataSource.append(dataSource.first!)
       collectionView.reloadData()
       
       let indexPath = NSIndexPath(item: 1, section: 0)
@@ -43,6 +45,13 @@ class BannerView: UIView {
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
+    setupCollectionView()
+    setupPageControl()
+    setupTimer()
+  }
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
     setupCollectionView()
     setupPageControl()
     setupTimer()
@@ -84,12 +93,13 @@ class BannerView: UIView {
   
   // MARK: - 计时器事件
   @objc fileprivate func nextPage() {
+    guard dataSource.count > 1 else { return }
     timerElapsed = NSDate()
-    if currentPage == (circleDataSource?.count)!  {
+    if currentPage == circleDataSource.count  {
       collectionScrollToIndex(1, animated: false)
     } else {
       self.collectionScrollToIndex(currentPage, animated: true)
-      if currentPage == (circleDataSource?.count)! { // 在timer运转的情况下，使最后一张图片过渡更平滑
+      if currentPage == circleDataSource.count { // 在timer运转的情况下，使最后一张图片过渡更平滑
         let when = DispatchTime.now() + 0.2
         DispatchQueue.main.asyncAfter(deadline: when, execute: {
           self.collectionScrollToIndex(1, animated: false)
@@ -108,15 +118,19 @@ class BannerView: UIView {
 
 extension BannerView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return circleDataSource?.count ?? 0
+    return circleDataSource.count
   }
 }
 
 extension BannerView: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BannerViewItem", for: indexPath) as! BannerViewItem
-    cell.imageView.image = circleDataSource?[indexPath.item]
+    cell.imageView.image = circleDataSource[indexPath.item]
     return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    bannerClicked?("")
   }
 }
 
@@ -140,15 +154,15 @@ extension BannerView: UIScrollViewDelegate {
     }
     if offset == 0 {
       DispatchQueue.main.async {
-        self.collectionScrollToIndex((self.circleDataSource?.count)! - 2, animated: false)
+        self.collectionScrollToIndex(self.circleDataSource.count - 2, animated: false)
       }
-    } else if offset == ((self.circleDataSource?.count)! - 1) {
+    } else if offset == (self.circleDataSource.count - 1) {
       DispatchQueue.main.async {
         self.collectionScrollToIndex(1, animated: false)
       }
     } else {
       self.collectionScrollToIndex(offset, animated: true)
-
+      
     }
     
   }
